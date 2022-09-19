@@ -65,7 +65,10 @@ export const useDetalle = () => {
   }, [intervalo, startDate, endDate]);
 
   useEffect(() => {
-    getCotizaciones();
+    const interval = setInterval(() => {
+      getCotizaciones();
+    }, 10000);
+    return () => clearInterval(interval);
   }, [intervalo, radioPicked]);
 
   return {
